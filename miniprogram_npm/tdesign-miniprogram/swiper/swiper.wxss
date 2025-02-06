@@ -27,6 +27,8 @@
 }
 .t-swiper {
   position: relative;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 20rpx;
 }
 .t-swiper-host {
   border-radius: var(--td-swiper-radius, var(--td-radius-large, 18rpx));

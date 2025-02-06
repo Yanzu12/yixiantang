@@ -2,6 +2,8 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  padding: 0;
-  background: #fff;
+  padding: 6rpx;
+  background:#fcefb8;
+  border-radius: 20rpx;
 }
+
