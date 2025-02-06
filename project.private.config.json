@@ -1,0 +1,7 @@
+{
+  "description": "项目描述",
+  "projectname": "yixiantang",
+  "setting": {
+    "compileHotReLoad": true
+  }
+}

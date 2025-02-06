@@ -1,0 +1,30 @@
+<view class="person-info">
+    <view class="avatarView">
+        <t-avatar
+            size="large"
+            t-class="avatar"
+            mode="aspectFill"
+            image="{{personInfo.avatarUrl}}"
+        />
+        <!-- <t-image slot="note" src="{{personInfo.avatarUrl}}" t-class="avatarUrl" mode="aspectFill" /> -->
+        <t-button class="avatarBtn" open-type="chooseAvatar" variant="text" theme="primary" size='medium' bind:chooseavatar="onChooseAvatar">修改头像</t-button>
+    </view> 
+  <t-cell-group>
+    <!-- <t-cell title="头像" center="{{true}}" open-type="chooseAvatar" data-type="avatarUrl" bind:click="onClickCell" arrow t-class-left="order-group__left"> -->
+    <!-- <t-cell title="头像" center="{{true}}"  arrow t-class-left="order-group__left"> -->
+       
+    <!-- </t-cell> -->
+    <t-cell title="昵称" arrow note="{{personInfo.nickName}}" data-type="name" bind:click="onClickCell" t-class="t-cell-class" t-class-left="order-group__left" />
+    <t-cell title="性别" arrow note="{{genderMap[personInfo.gender]}}" data-type="gender" bind:click="onClickCell" t-class="t-cell-class" t-class-left="order-group__left" />
+    <t-cell title="微信号" arrow note="{{personInfo.wx_account}}" data-type="wx" bind:click="onClickCell" t-class="t-cell-class" t-class-left="order-group__left" />
+    <t-cell bordered="{{false}}" title="手机号" arrow note="{{personInfo.phoneNumber ? personInfo.phoneNumber : '去绑定手机号'}}" data-type="phoneNumber" bind:click="onClickCell" t-class="t-cell-class" t-class-left="order-group__left" />
+    <!-- 获取微信手机号 -->
+    <!-- <view class="wxphone">手机号
+      <t-button class="btn" size="large" theme="primary" variant="text" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">获取微信手机号</t-button>
+      <t-button class="btn" size="large" variant="text">文字按钮</t-button>
+    </view> -->
+  </t-cell-group>
+  
+</view>
+<t-select-picker show="{{typeVisible}}" picker-options="{{pickerOptions}}" title="选择性别" value="{{personInfo.gender}}" bind:confirm="onConfirm" bind:close="onClose" />
+<t-toast id="t-toast" />
