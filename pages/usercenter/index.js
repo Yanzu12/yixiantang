@@ -14,6 +14,27 @@ const menuData = [
       url: '',
       type: 'address',
     },
+    
+    {
+      title: '我的积分',
+      tit: '',
+      url: '',
+      type: 'point',
+    },
+    
+    {
+      title: '帮助中心',
+      tit: '',
+      url: '',
+      type: 'help-center',
+    },
+
+    {
+      title: '联系客服',
+      tit: '',
+      url: '',
+      type: 'service',
+    }
   ],
 ];
 
@@ -61,7 +82,8 @@ const getDefaultData = () => ({
     avatarUrl: '',
     nickName: '正在登录...',
     phoneNumber: '',
-    _id:''
+    _id:'',
+    points: 0
   },
   menuData,
   orderTagInfos,
@@ -116,16 +138,19 @@ Page({
       'orderTagInfos[1].orderNum': send,
       'orderTagInfos[2].orderNum': receive,
     });
-  },
-
-  fetUseriInfoHandle() {
+    //fetchUserInfoHandle()
     fetchUserCenter().then(({ upserInfo, countsData, customerServiceInfo }) => {
       // eslint-disable-next-line no-unused-expressions
+      //console.log('用户信息',userInfo)
       menuData?.[0].forEach((v) => {
         countsData && countsData.forEach((counts) => {
           if (counts.type === v.type) {
             // eslint-disable-next-line no-param-reassign
             v.tit = counts.num;
+          }
+          if (v.type === 'point'){
+            v.tit = userInfo.points;
+            console.log('用户积分',v.tit)
           }
         });
       });
@@ -138,6 +163,9 @@ Page({
     //   this.initUser();
       wx.stopPullDownRefresh();
     });
+  },
+  fetUseriInfoHandle() {
+    
   },
 
   onClickCell({ currentTarget }) {

@@ -7,12 +7,12 @@ const userInfo = {
 };
 const countsData = [
   {
-    num: 2,
+    num: 3,
     name: '积分',
     type: 'point',
   },
   {
-    num: 10,
+    num: 0,
     name: '优惠券',
     type: 'coupon',
   },
@@ -38,7 +38,7 @@ const orderTagInfos = [
 ];
 
 const customerServiceInfo = {
-  servicePhone: '4006336868',
+  servicePhone: '10086',
   serviceTimeDuration: '每周三至周五 9:00-12:00  13:00-15:00',
 };
 

@@ -27,7 +27,7 @@ Page({
   },
   onLoad(options) {
     const { name,uid,type} = options;
-    console.log(name,"-",uid);
+    console.log(name,"-",uid,"-",type);
     this.setData({
       nameValue: name,
       uid:uid,
