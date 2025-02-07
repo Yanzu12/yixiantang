@@ -191,13 +191,15 @@ Page({
         break;
       }
       case 'point': {
-        Toast({
-          context: this,
-          selector: '#t-toast',
-          message: '你点击了积分菜单',
-          icon: '',
-          duration: 1000,
-        });
+        // Toast({
+        //   context: this,
+        //   selector: '#t-toast',
+        //   message: '你点击了积分菜单',
+        //   icon: '',
+        //   duration: 1000,
+        // });
+        // break;
+        wx.navigateTo({ url: '/pages/usercenter/mypoint/index'});
         break;
       }
       case 'coupon': {

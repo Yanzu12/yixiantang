@@ -26,6 +26,7 @@ Page({
       ],
   },
   onLoad(options) {
+    console.log('debug',options)
     const { name,uid,type} = options;
     console.log(name,"-",uid,"-",type);
     this.setData({

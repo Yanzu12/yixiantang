@@ -1,0 +1,3 @@
+<!--pages/usercenter/mypoint/index.wxml-->
+<view style="text-align: center;">我的积分：{{personInfo.points}}</view>
+<view style="text-align: center;"><button  size="mini" type="primary" bind:tap="addpoint">+1</button></view>
