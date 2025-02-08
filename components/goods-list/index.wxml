@@ -1,6 +1,6 @@
 <view class="goods-list-wrap wr-class" id="{{independentID}}">
 	<block wx:for="{{goodsList}}" wx:for-item="item" wx:key="index">
-		<goods-card style="background-color: #fcefb8;"
+		<goods-card
 		  id="{{independentID}}-gd-{{index}}"
 		  data="{{item}}"
 		  currency="{{item.currency || '¥'}}"

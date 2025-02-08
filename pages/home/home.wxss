@@ -112,4 +112,5 @@ page {
 
 page{
   background-image: url('https://static.igem.wiki/teams/5217/image/yellow.png');
+  background-attachment: fixed;
 }
