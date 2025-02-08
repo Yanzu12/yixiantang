@@ -3,7 +3,8 @@
   flex-flow: row wrap;
   justify-content: space-between;
   padding: 6rpx;
-  background:#fcefb8;
+  background-image: url('https://static.igem.wiki/teams/5217/image/yellow.png');
+  background-attachment: fixed;
   border-radius: 20rpx;
 }
 

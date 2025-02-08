@@ -95,7 +95,6 @@ page {
 }
 
 .home-page-container .goods-list-container {
-  background-image: url('https://static.igem.wiki/teams/5217/image/yellow.png');
   margin-top: 16rpx;
 }
 
@@ -108,6 +107,7 @@ page {
 
 .home-page-container{
   background-image: url('https://static.igem.wiki/teams/5217/image/yellow.png');
+  background-attachment: fixed;
 }
 
 page{
