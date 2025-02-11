@@ -5,6 +5,7 @@
     "pages/usercenter/person-info/index",
     "pages/usercenter/address/list/index",
     "pages/usercenter/mypoint/index",
+    "pages/usercenter/bind/index",
     "pages/usercenter/address/edit/index",
     "pages/goods/list/index",
     "pages/goods/details/index",

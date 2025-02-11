@@ -83,7 +83,8 @@ const getDefaultData = () => ({
     nickName: '正在登录...',
     phoneNumber: '',
     _id:'',
-    points: 0
+    points: 0,
+    inviter:''
   },
   menuData,
   orderTagInfos,
@@ -199,8 +200,15 @@ Page({
         //   duration: 1000,
         // });
         // break;
-        wx.navigateTo({ url: '/pages/usercenter/mypoint/index'});
+        //console.log(this.data.userInfo)
+        if(this.data.userInfo.inviter === 'uninvited'){//判断是否绑定上级
+          wx.navigateTo({ url: '/pages/usercenter/bind/index'});//绑定
+          break;
+        }else{
+          wx.navigateTo({ url: '/pages/usercenter/mypoint/index'});//积分
         break;
+        }
+        
       }
       case 'coupon': {
         wx.navigateTo({ url: '/pages/coupon/coupon-list/index' });

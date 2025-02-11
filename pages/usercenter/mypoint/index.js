@@ -15,7 +15,7 @@ Page({
       phoneNumber: '',
       wx_account:'',
       _id:'',
-      points: 3
+      points: 0
     }
   },
 

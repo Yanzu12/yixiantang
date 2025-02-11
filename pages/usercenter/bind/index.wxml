@@ -1,0 +1,13 @@
+<!--pages/usercenter/bind/index.wxml-->
+<text>请输入邀请码</text>
+<input style="border: 5rpx solid;"
+    placeholder="请输入邀请码"
+    bindinput="saveinviter"
+  />
+  <view class="name-edit__input--desc">一经绑定无法修改，请确认邀请码无误</view>
+  <view class="name-edit__wrapper">
+    <button type="primary" shape="round" bind:tap="onSubmit">保存</button>
+  </view>
+  <view class="name-edit__wrapper">
+    <button type="primary" shape="round" bind:tap="onSubmit">跳过</button>
+  </view>

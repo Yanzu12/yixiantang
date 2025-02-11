@@ -1,3 +1,8 @@
 <!--pages/usercenter/mypoint/index.wxml-->
-<view style="text-align: center;">我的积分：{{personInfo.points}}</view>
-<view style="text-align: center;"><button  size="mini" type="primary" bind:tap="addpoint">+1</button></view>
+<view style="text-align: center;">我的邀请码(长按复制)：<rich-text user-select="true">{{personInfo._id}}</rich-text></view>
+
+
+<view style="text-align: center;margin-top: 100rpx;">我的积分：{{personInfo.points}}</view>
+
+<!-- <view style="text-align: center;"><button  size="mini" type="primary" bind:tap="addpoint">+1</button></view> -->
+<view style="text-align: center;margin-top: 50rpx;">积分明细：</view>

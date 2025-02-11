@@ -10,19 +10,24 @@ export function getUser(){
         wx.getStorage({
             key: USER_STORAGE_KEY,
             success (res) {
-            console.log('res',res)
-            if(typeof(res.data) != 'undefined'){
-                console.log("read store",res.data);
-                resolve( res.data );
-            }else{
-                const userInfo = getUserFromCloud();
-                resolve( userInfo);
-            }
+            //正式环境：通过缓存本地读取
+            // console.log('res',res)
+            // if(typeof(res.data) != 'undefined'){
+            //     console.log("read store",res.data);
+            //     resolve( res.data );
+            // }else{
+            //     const userInfo = getUserFromCloud();
+            //     resolve( userInfo);
+            // }
+            //测试环境：数据库远程读取
+              const userInfo = getUserFromCloud();
+              console.log('debug',userInfo)
+              resolve(userInfo);
             },
             fail(error){
                 console.log('error',error);
                 const userInfo = getUserFromCloud();
-                resolve( userInfo);
+                resolve(userInfo);
             }
         })
     })

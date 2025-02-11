@@ -8,6 +8,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "绑定上级",
+          "pathName": "pages/usercenter/bind/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "个人信息",
           "pathName": "pages/usercenter/person-info/index",
           "query": "",
