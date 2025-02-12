@@ -8,6 +8,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/usercenter/bind/index",
+          "pathName": "pages/usercenter/bind/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "绑定上级",
           "pathName": "pages/usercenter/bind/index",
           "query": "",

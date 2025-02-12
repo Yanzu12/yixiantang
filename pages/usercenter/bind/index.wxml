@@ -1,13 +1,26 @@
 <!--pages/usercenter/bind/index.wxml-->
-<text>请输入邀请码</text>
-<input style="border: 5rpx solid;"
-    placeholder="请输入邀请码"
-    bindinput="saveinviter"
-  />
-  <view class="name-edit__input--desc">一经绑定无法修改，请确认邀请码无误</view>
-  <view class="name-edit__wrapper">
-    <button type="primary" shape="round" bind:tap="onSubmit">保存</button>
+
+<view class="container">
+  <image src="https://static.igem.wiki/teams/5217/image/yellow.png" mode="aspectFill" class="background-image"></image>
+
+  <view class="header-nav" style="height: 93px;">
+    <view class="header-left" bindtap="goBack">
+      <view class="arrow-left">←</view>
+    </view>
+    <view class="header-middle">绑定</view>
   </view>
-  <view class="name-edit__wrapper">
-    <button type="primary" shape="round" bind:tap="onSubmit">跳过</button>
+
+  <view class="footer">
+    <view class="text">请输入邀请码</view>
+    <view class="input"><input style="border: 5rpx solid;" placeholder="请输入邀请码" bindinput="saveinviter" /></view>
+    <view class="description">一经绑定无法修改，请确认邀请码无误</view>
+    <view class="two">
+      <view class="name-edit__wrapper">
+        <button type="primary" shape="round" bind:tap="onSubmit">保存</button>
+      </view>
+      <view class="name-edit__wrapper">
+        <button type="primary" shape="round" bind:tap="onSubmit">跳过</button>
+      </view>
+    </view>
   </view>
+</view>

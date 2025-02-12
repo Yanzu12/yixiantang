@@ -1,8 +1,49 @@
 <!--pages/usercenter/mypoint/index.wxml-->
-<view style="text-align: center;">我的邀请码(长按复制)：<rich-text user-select="true">{{personInfo._id}}</rich-text></view>
 
 
-<view style="text-align: center;margin-top: 100rpx;">我的积分：{{personInfo.points}}</view>
+<view class="container">
+  <image src="https://static.igem.wiki/teams/5217/image/yellow.png" mode="aspectFill" class="background-image"></image>
 
-<!-- <view style="text-align: center;"><button  size="mini" type="primary" bind:tap="addpoint">+1</button></view> -->
-<view style="text-align: center;margin-top: 50rpx;">积分明细：</view>
+  <view class="header-nav" style="height: 93px;">
+    <view class="header-left" bindtap="goBack">
+      <view class="arrow-left">←</view>
+    </view>
+    <view class="header-middle">详情</view>
+  </view>
+
+
+  <view class="footer">
+
+
+
+  <view class="card-container">
+    <view class="card">
+      <view class="meta">
+        <view class="name">我的邀请码（长按复制）：</view>
+        <view class="count"><rich-text user-select="true">{{personInfo._id}}</rich-text></view>
+      </view>
+      <image class="icon" src="/imgs/邀请码.png"></image>
+    </view>
+    <view class="card">
+      <view class="meta">
+        <view class="name">我的积分：</view>
+        <view class="count">{{personInfo.points}}</view>
+      </view>
+      <image class="icon" src="/imgs/积分.png"></image>
+    </view>
+    <view class="three">
+      <view class="meta">
+        <view class="name">积分明细：</view>
+      </view>
+      <image class="icon" src="/imgs/详情.png"></image>
+    </view>
+  </view>
+  </view>
+
+
+
+
+
+
+
+</view>
