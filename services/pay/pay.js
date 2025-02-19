@@ -9,7 +9,8 @@ export async function pay(order) {
       // 云函数名称
       name: 'shop_pay',
       data: {
-        orderId: order.id
+        orderId: order.id,
+        point: order.points
       },
     });
     console.log('dr',order);

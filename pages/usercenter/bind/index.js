@@ -38,7 +38,7 @@ Page({
     wx.hideToast();
     if(typeof(res.openId)!='undefined'){
         wx.showToast({
-            title: '修改成功',
+            title: '保存成功',
             icon: 'success',
             duration: 1500
           }).then(() => {

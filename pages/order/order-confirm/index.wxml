@@ -19,16 +19,18 @@
       <price fill decimalSmaller wr-class="pay-item__right font-bold" price="{{totalSalePrice * 100}}" />
     </view>
   </view>
+  <view style="display: flex;"><text>使用</text><input id="point" type="number" value="{{value}}" style="width: 100rpx;border: 4rpx solid;" bindblur="usepoints" /><text>积分抵扣(每100积分可抵扣1元)</text></view>
+  <view>当前积分余额：{{points}}</view>
   <view class="amount-wrapper">
     <view class="pay-amount">
       <text class="order-num">共{{goodsList.length}}件</text>
       <text>小计</text>
-      <price class="total-price" price="{{totalSalePrice * 100}}" fill="{{false}}" decimalSmaller />
+      <price class="total-price" price="{{currprice * 100}}" fill="{{false}}" decimalSmaller />
     </view>
   </view>
   <view class="wx-pay-cover">
     <view class="wx-pay">
-      <price decimalSmaller fill class="price" price="{{totalSalePrice * 100}}" />
+      <price decimalSmaller fill class="price" price="{{currprice * 100}}" />
       <view class="submit-btn {{ userAddress != null ? '' : 'btn-gray'}}" bindtap="submitOrder">
         提交订单
       </view>

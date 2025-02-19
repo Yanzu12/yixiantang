@@ -8,6 +8,7 @@ import { getSingleCloudImageTempUrl } from '../../../utils/cloudImageHandler';
 import { cartShouldFresh } from '../../../utils/cartFresh';
 import { pay } from '../../../services/pay/pay';
 import { getUser } from '../../../services/usercenter/user';
+//import { getElement } from 'XrFrame/core/Element';
 
 const stripeImg = `https://cdn-we-retail.ym.tencent.com/miniapp/order/stripe.png`;
 
@@ -85,19 +86,61 @@ Page({
     cartItems: [],
     totalSalePrice: 0,
     directSku: null,
+    points:0,
+    usepoints:0,
+    value:0,
+    currprice:0
   },
 
   payLock: false,
+
+  usepoints(e){
+    this.setData({
+      usepoints: parseInt(e.detail.value)
+    })
+    console.log(this.data.usepoints)
+    const max = Math.floor(this.data.points>this.data.totalSalePrice*100-1?this.data.totalSalePrice*100-1:this.data.points)
+    if(this.data.usepoints > this.data.points){
+      wx.showToast({
+        title: '余额不足',
+        icon: 'error',
+        duration: 1000
+      })
+      this.setData({
+        usepoints: max,
+        value: max,
+        currprice: this.data.totalSalePrice - max*0.01
+      })
+      //console.log(this.data.usepoints)
+    }else if(this.data.usepoints > max){
+      wx.showToast({
+        title: '最低0.01元',
+        icon: 'error',
+        duration: 1000
+      })
+      this.setData({
+        usepoints: max,
+        value: max,
+        currprice: this.data.totalSalePrice - max*0.01
+      })
+      //console.log(this.data.usepoints)
+    }else{
+      this.setData({
+        currprice: this.data.totalSalePrice - this.data.usepoints*0.01
+      })
+    }
+  },
 
   type: null,
   onShow() {
     this.initUser();
   },
   async initUser(){
-    const {_id} = await getUser();  
-    console.log('u',_id);
+    const {_id,points} = await getUser();  
+    console.log('u',_id,points);
     this.setData({
       uid:_id,
+      points:points
     })
 },
 
@@ -119,9 +162,12 @@ Page({
       );
       const goodsList = cartItemToGoodList(cartItems);
       const totalSalePrice = goodsList.reduce((acc, cur) => acc + cur.price * cur.num, 0);
+      const currprice = totalSalePrice
+      
       this.setData({
         goodsList,
         totalSalePrice,
+        currprice,
         cartItems,
       });
     } catch (e) {
@@ -151,9 +197,11 @@ Page({
       ];
 
       const totalSalePrice = goodsList.reduce((acc, cur) => acc + cur.price * cur.num, 0);
+      const currprice = totalSalePrice
       this.setData({
         goodsList,
         totalSalePrice,
+        currprice,
         directSku: sku,
       });
     } catch (e) {
@@ -217,9 +265,9 @@ Page({
     });
   },
 
-  async payImpl(totalPrice, orderId) {
+  async payImpl(totalPrice, orderId , points ) {
     try {
-      await pay({ id: orderId, totalPrice });
+      await pay({ id: orderId, totalPrice , points});
       try {
         await updateOrderStatus({ orderId, status: ORDER_STATUS.TO_SEND });
         this.toast('支付成功');
@@ -302,7 +350,7 @@ Page({
       await createOrderItemFromSku({ count: goods.num, orderId, skuId: directSku._id });
       const totalPrice = goods.price * goods.num;
 
-      await this.payImpl(totalPrice, orderId);
+      await this.payImpl(totalPrice, orderId, points);
       wx.hideLoading();
 
     } catch (e) {
