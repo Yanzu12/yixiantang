@@ -10,7 +10,6 @@ export async function pay(order) {
       name: 'shop_pay',
       data: {
         orderId: order.id,
-        point: order.points
       },
     });
     console.log('dr',order);

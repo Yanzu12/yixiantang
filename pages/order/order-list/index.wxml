@@ -18,6 +18,7 @@
         <view class="price-total">
           <text class="bold-price" decode="{{true}}">总价&nbsp;</text>
           <price fill class="real-pay" price="{{order.totalPrice * 100 + ''}}" decimalSmaller />
+          <text>已使用{{order.use_points}}积分抵扣</text>
         </view>
         <!-- 订单按钮栏 -->
         <order-button-bar bindoperation="onOperation" order="{{order}}" bindrefresh="onRefresh" data-order="{{order}}" />
