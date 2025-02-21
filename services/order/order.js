@@ -31,7 +31,7 @@ export const orderStatusToName = (status) => Object.values(ORDER_STATUS_INFO).fi
  * }} param0
  * @returns
  */
-export async function createOrder({ status, addressId,uid }) {
+export async function createOrder({ status, addressId,uid ,usepoints}) {
     console.log('md',uid);
   return (
     await model()[ORDER_MODEL_KEY].create({
@@ -40,9 +40,10 @@ export async function createOrder({ status, addressId,uid }) {
         delivery_info: {
           _id: addressId,
         },
-        purchaser:{
+        purchaser:{ 
             _id:uid,
-        }
+        },
+        use_points: usepoints
       },
     })
   ).data;

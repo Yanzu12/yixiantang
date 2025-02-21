@@ -100,6 +100,7 @@ Page({
 
       order.orderItems = orderItems;
       order.totalPrice = orderItems.reduce((acc, cur) => acc + cur.pay_price * cur.count, 0);
+      order.totalPrice = order.totalPrice - order.use_points*0.01;
     } catch (e) {
       this.errorToast('获取订单详情失败', e);
     }

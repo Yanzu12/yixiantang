@@ -34,6 +34,12 @@
       </view>
       <image class="icon" src="/imgs/详情.png"></image>
     </view>
+    <view>共{{total}}条记录</view>
+    <view style="display: flex;"><view>时间</view><view style="margin-left: 50%;">明细</view></view>
+    <view style="display: flex;"  wx:for="{{point_history}}" wx:key="index" wx:for-item="item">
+        <view>{{item.createdAt}}</view>
+        <view style="margin-left: 20%;">{{item.point_change}}</view>
+      </view>
   </view>
   </view>
 

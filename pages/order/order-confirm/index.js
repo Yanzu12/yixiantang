@@ -8,6 +8,8 @@ import { getSingleCloudImageTempUrl } from '../../../utils/cloudImageHandler';
 import { cartShouldFresh } from '../../../utils/cartFresh';
 import { pay } from '../../../services/pay/pay';
 import { getUser } from '../../../services/usercenter/user';
+import { updateUser } from '../../../services/usercenter/user';
+import { setPointHistory } from '../../../services/point/createPointHistory'
 //import { getElement } from 'XrFrame/core/Element';
 
 const stripeImg = `https://cdn-we-retail.ym.tencent.com/miniapp/order/stripe.png`;
@@ -98,6 +100,12 @@ Page({
     this.setData({
       usepoints: parseInt(e.detail.value)
     })
+    if(isNaN(this.data.usepoints)){
+      console.log(this.data.usepoints)
+      this.setData({
+        usepoints: 0
+      })
+    }
     console.log(this.data.usepoints)
     const max = Math.floor(this.data.points>this.data.totalSalePrice*100-1?this.data.totalSalePrice*100-1:this.data.points)
     if(this.data.usepoints > this.data.points){
@@ -265,9 +273,9 @@ Page({
     });
   },
 
-  async payImpl(totalPrice, orderId , points ) {
+  async payImpl( orderId ) {
     try {
-      await pay({ id: orderId, totalPrice , points});
+      await pay({ id: orderId});
       try {
         await updateOrderStatus({ orderId, status: ORDER_STATUS.TO_SEND });
         this.toast('支付成功');
@@ -293,9 +301,19 @@ Page({
     wx.showLoading({ title: '订单处理中' });
 
     const { cartItems, userAddress,uid } = this.data;
-    const { id: orderId } = await createOrder({ status: ORDER_STATUS.TO_PAY, addressId: userAddress._id,uid });
+    const { id: orderId } = await createOrder({ status: ORDER_STATUS.TO_PAY, addressId: userAddress._id,uid, usepoints:this.data.usepoints});
+    const points_left = this.data.points - this.data.usepoints;
+    if(this.data.usepoints != 0){
+      const res = await updateUser({
+      uid,
+      data:{
+          points: points_left
+      },
+    });
     console.log('1-c-order');
-
+    setPointHistory(uid,0-this.data.usepoints);
+    }
+    
     try {
       // await cartItems.map(async (cartItem) => {
       //   const up_order = await createOrderItemFromCartItem(cartItem, orderId);
@@ -308,9 +326,9 @@ Page({
        .then((up_orders) => {
             console.log('所有订单商品项创建完成，结果如下：', up_orders);
             // 在这里可以继续进行后续操作，比如计算总价和支付等
-            const totalPrice = cartItems.reduce((acc, cur) => acc + cur.count * cur.sku.price, 0);
-            console.log('3-price', totalPrice);
-            return this.payImpl(totalPrice, orderId);
+            // const totalPrice = goods.price * goods.num - this.data.usepoints * 0.01;
+            // console.log('3-price', totalPrice);
+            return this.payImpl(orderId);
             wx.hideLoading();
 
         })
@@ -344,13 +362,23 @@ Page({
 
     const { directSku, userAddress, goodsList,uid } = this.data;
     const goods = goodsList[0];
-    const { id: orderId } = await createOrder({ status: ORDER_STATUS.TO_PAY, addressId: userAddress._id,uid });
-
+    const { id: orderId } = await createOrder({ status: ORDER_STATUS.TO_PAY, addressId: userAddress._id,uid ,usepoints: this.data.usepoints});
+    const points_left = this.data.points - this.data.usepoints;
+    if(this.data.usepoints != 0){
+      const res = await updateUser({
+      uid,
+      data:{
+          points: points_left
+      },
+    });
+    console.log('1-c-order');
+    setPointHistory(uid,0-this.data.usepoints);
+    }
     try {
       await createOrderItemFromSku({ count: goods.num, orderId, skuId: directSku._id });
-      const totalPrice = goods.price * goods.num;
+      // const totalPrice = goods.price * goods.num - this.data.usepoints * 0.01;
 
-      await this.payImpl(totalPrice, orderId, points);
+      await this.payImpl(orderId);
       wx.hideLoading();
 
     } catch (e) {
