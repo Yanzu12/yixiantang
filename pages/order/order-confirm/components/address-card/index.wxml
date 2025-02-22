@@ -1,12 +1,12 @@
 <wxs module="utils">
-	var hidePhoneNum = function(array) {
-	if (!array) return;
-	var mphone = array.substring(0, 3) + '****' + array.substring(7);
-	return mphone;
-	}
-	module.exports = {
-	hidePhoneNum:hidePhoneNum
-	}
+  var hidePhoneNum = function (array) {
+    if (!array) return;
+    var mphone = array.substring(0, 3) + '****' + array.substring(7);
+    return mphone;
+  }
+  module.exports = {
+    hidePhoneNum: hidePhoneNum
+  }
 </wxs>
 <view class="address-card wr-class">
   <t-cell wx:if="{{addressData && addressData.detailAddress}}" bindtap="onAddressTap" hover>

@@ -13,37 +13,46 @@
 
 
   <view class="footer">
+    <view class="card-container">
+      <view class="card">
+        <view class="meta">
+          <view class="name">我的邀请码（长按复制）：</view>
+          <view class="count">
+            <rich-text user-select="true">{{personInfo._id}}</rich-text>
+          </view>
+        </view>
+        <image class="icon" src="/imgs/邀请码.png"></image>
+      </view>
+      <view class="card">
+        <view class="meta">
+          <view class="name">我的积分：</view>
+          <view class="count">{{personInfo.points}}</view>
+        </view>
+        <image class="icon" src="/imgs/积分.png"></image>
+      </view>
+      <scroll-view scroll-y="true" class="three">
+        <view class="bitch">
+          <view class="meta">
+            <view class="name">积分明细：</view>
+          </view>
+          <image class="icon" src="/imgs/详情.png"></image>
+        </view>
+        <view class="fuck">
+          <view>共{{total}}条记录</view>
+          <view style="display: flex;">
+            <view>时间</view>
+            <view style="margin-left: 480rpx;">明细</view>
+          </view>
+          <view class="cnm" wx:for="{{point_history}}" wx:key="index" wx:for-item="item">
+            <view>{{item.createdAt}}</view>
+            <view style="margin-right: 65rpx;">{{item.point_change}}</view>
+          </view>
+        </view>
+      </scroll-view>
 
 
 
-  <view class="card-container">
-    <view class="card">
-      <view class="meta">
-        <view class="name">我的邀请码（长按复制）：</view>
-        <view class="count"><rich-text user-select="true">{{personInfo._id}}</rich-text></view>
-      </view>
-      <image class="icon" src="/imgs/邀请码.png"></image>
     </view>
-    <view class="card">
-      <view class="meta">
-        <view class="name">我的积分：</view>
-        <view class="count">{{personInfo.points}}</view>
-      </view>
-      <image class="icon" src="/imgs/积分.png"></image>
-    </view>
-    <view class="three">
-      <view class="meta">
-        <view class="name">积分明细：</view>
-      </view>
-      <image class="icon" src="/imgs/详情.png"></image>
-    </view>
-    <view>共{{total}}条记录</view>
-    <view style="display: flex;"><view>时间</view><view style="margin-left: 50%;">明细</view></view>
-    <view style="display: flex;"  wx:for="{{point_history}}" wx:key="index" wx:for-item="item">
-        <view>{{item.createdAt}}</view>
-        <view style="margin-left: 20%;">{{item.point_change}}</view>
-      </view>
-  </view>
   </view>
 
 

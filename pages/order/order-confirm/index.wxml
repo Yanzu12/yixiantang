@@ -1,31 +1,39 @@
 <view class="order-sure" wx:if="{{!loading}}">
-  <address-card addressData="{{userAddress}}" bind:addclick="onGotoAddress" bind:addressclick="onGotoAddress" />
-  <view class="order-wrapper">
-    <view wx:if="{{goodsList.length > 0}}" wx:for="{{goodsList}}" wx:for-item="goods" wx:for-index="gIndex" wx:key="id" class="goods-wrapper">
-      <t-image src="{{goods.thumb}}" t-class="goods-image" mode="aspectFill" />
-      <view class="goods-content">
-        <view class="goods-title">{{goods.title}}</view>
-        <view>{{goods.specs}}</view>
-      </view>
-      <view class="goods-right">
-        <price wr-class="goods-price" price="{{goods.price * 100}}" fill="{{true}}" decimalSmaller />
-        <view class="goods-num">x{{goods.num}}</view>
+  <view class="container">
+    <address-card addressData="{{userAddress}}" bind:addclick="onGotoAddress" bind:addressclick="onGotoAddress" />
+    <view class="order-wrapper">
+      <view wx:if="{{goodsList.length > 0}}" wx:for="{{goodsList}}" wx:for-item="goods" wx:for-index="gIndex" wx:key="id" class="goods-wrapper">
+        <t-image src="{{goods.thumb}}" t-class="goods-image" mode="aspectFill" />
+        <view class="goods-content">
+          <view class="goods-title">{{goods.title}}</view>
+          <view>{{goods.specs}}</view>
+        </view>
+        <view class="goods-right">
+          <price wr-class="goods-price" price="{{goods.price * 100}}" fill="{{true}}" decimalSmaller />
+          <view class="goods-num">x{{goods.num}}</view>
+        </view>
       </view>
     </view>
-  </view>
-  <view class="pay-detail">
-    <view class="pay-item">
-      <text>商品总额</text>
-      <price fill decimalSmaller wr-class="pay-item__right font-bold" price="{{totalSalePrice * 100}}" />
+    <view class="pay-detail">
+      <text style="color: #c2c0c0; font-size: 29rpx;">----------------------------------------------------</text>
+      <view class="pay-item">
+        <text style="font-size: 28rpx;">商品总额</text>
+        <price fill decimalSmaller wr-class="pay-item__right font-bold" price="{{totalSalePrice * 100}}" />
+      </view>
     </view>
-  </view>
-  <view style="display: flex;"><text>使用</text><input id="point" type="number" value="{{value}}" style="width: 100rpx;border: 4rpx solid;" bindblur="usepoints" /><text>积分抵扣(每100积分可抵扣1元)</text></view>
-  <view>当前积分余额：{{points}}</view>
-  <view class="amount-wrapper">
-    <view class="pay-amount">
-      <text class="order-num">共{{goodsList.length}}件</text>
-      <text>小计</text>
-      <price class="total-price" price="{{currprice * 100}}" fill="{{false}}" decimalSmaller />
+
+    <view class="fucker">
+      <text style="color: #c2c0c0; font-size: 29rpx;">----------------------------------------------------</text>
+      <view style="display: flex; margin-top: 15rpx;">使用 <input id="point" type="number" value="{{value}}" style="width: 100rpx;" bindblur="usepoints" />积分抵扣（每100积分可抵扣1元）</view>
+      <view style="margin-top: 12px;">当前积分余额：<text style="color:red;">{{points}}</text></view>
+    </view>
+    <view class="amount-wrapper">
+      <text style="color: #c2c0c0; font-size: 29rpx;">----------------------------------------------------</text>
+      <view class="pay-amount">
+        <text class="order-num">共{{goodsList.length}}件，</text>
+        <text>小计</text>
+        <price class="total-price" price="{{currprice * 100}}" fill="{{false}}" decimalSmaller />
+      </view>
     </view>
   </view>
   <view class="wx-pay-cover">
@@ -36,6 +44,7 @@
       </view>
     </view>
   </view>
+
 </view>
 <t-toast id="t-toast" />
 <t-dialog id="t-dialog" />

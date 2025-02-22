@@ -8,6 +8,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/order/order-confirm/index",
+          "pathName": "pages/order/order-confirm/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/usercenter/bind/index",
           "pathName": "pages/usercenter/bind/index",
           "query": "",

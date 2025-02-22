@@ -95,17 +95,31 @@
   margin-left: 25rpx;
   margin-top: 20rpx  ;
   width: 700rpx;
-  height: 600rpx;
+  height: 900rpx;
   background-color: #fff;
   border-radius: 15rpx;
   box-sizing: border-box;
   padding: 30rpx;
-  display: flex;
-  justify-content: space-between;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .three .icon {
   width: 72rpx;
   height: 72rpx;
+}
+
+.bitch{
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
+.fuck{
+  font-size: 32rpx;
+  color: gray;
+}
+
+.cnm{
+  display: flex;
+  justify-content: space-between;
 }
