@@ -101,6 +101,7 @@ Page({
       (await getCloudImageTempUrl(images)).forEach((image, index) => (orderItems[index].sku.image = image));
     order.orderItems = orderItems;
     order.totalPrice = orderItems.reduce((acc, cur) => acc + cur.count * cur.pay_price, 0);
+    order.currPrice = order.totalPrice - order.use_points * 0.01;
     order.statusDesc = orderStatusToName(order.status);
     order.isPaid = order.status !== ORDER_STATUS.TO_PAY;
     order.createdTimeString = dayjs(new Date(order.createdAt)).format('YYYY-MM-DD HH:mm:ss');
