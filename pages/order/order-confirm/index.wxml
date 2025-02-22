@@ -15,7 +15,6 @@
       </view>
     </view>
     <view class="pay-detail">
-      <text style="color: #c2c0c0; font-size: 29rpx;">----------------------------------------------------</text>
       <view class="pay-item">
         <text style="font-size: 28rpx;">商品总额</text>
         <price fill decimalSmaller wr-class="pay-item__right font-bold" price="{{totalSalePrice * 100}}" />
@@ -23,12 +22,10 @@
     </view>
 
     <view class="fucker">
-      <text style="color: #c2c0c0; font-size: 29rpx;">----------------------------------------------------</text>
-      <view style="display: flex; margin-top: 15rpx;">使用 <input id="point" type="number" value="{{value}}" style="width: 100rpx;" bindblur="usepoints" />积分抵扣（每100积分可抵扣1元）</view>
-      <view style="margin-top: 12px;">当前积分余额：<text style="color:red;">{{points}}</text></view>
+      <view style="display: flex; padding-top: 18rpx;">使用 <input id="point" type="number" value="{{value}}" style="width: 100rpx;" bindblur="usepoints" />积分抵扣（每100积分可抵扣1元）</view>
+      <view style="margin-top: 15px;">当前积分余额：<text style="color:red;">{{points}}</text></view>
     </view>
     <view class="amount-wrapper">
-      <text style="color: #c2c0c0; font-size: 29rpx;">----------------------------------------------------</text>
       <view class="pay-amount">
         <text class="order-num">共{{goodsList.length}}件，</text>
         <text>小计</text>
