@@ -73,6 +73,9 @@
 .t-tab-bar-item__content--checked {
   color: var(--td-tab-bar-active-color, var(--td-brand-color, var(--td-primary-color-7, #0052d9)));
   font-weight: 600;
+  box-shadow: 
+  inset 3px 3px 5px rgba(0, 0, 0, 0.2), /* 深色阴影 */
+  inset -3px -3px 5px rgba(255, 255, 255, 0.8); /* 浅色阴影 */
 }
 .t-tab-bar-item__content--tag {
   border-radius: 99px;

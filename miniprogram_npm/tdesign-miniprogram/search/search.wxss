@@ -34,6 +34,7 @@
 .t-search__label {
   padding: 8rpx;
   color: var(--td-search-label-color, var(--td-text-color-primary, var(--td-font-gray-1, rgba(0, 0, 0, 0.9))));
+  
 }
 .t-search__input-box {
   flex: 1;
@@ -44,6 +45,9 @@
   border: 2rpx solid var(--td-search-bg-color, var(--td-bg-color-secondarycontainer, var(--td-gray-color-1, #f3f3f3)));
   background: var(--td-search-bg-color, var(--td-bg-color-secondarycontainer, var(--td-gray-color-1, #f3f3f3)));
   padding: var(--td-search-padding, 16rpx 24rpx);
+  box-shadow: 
+    inset 3px 3px 5px rgba(0, 0, 0, 0.2), /* 深色阴影 */
+    inset -3px -3px 5px rgba(255, 255, 255, 0.8); /* 浅色阴影 */
 }
 .t-search__input-box.t-is-focused {
   border-color: var(--td-search-bg-color, var(--td-bg-color-secondarycontainer, var(--td-gray-color-1, #f3f3f3)));
