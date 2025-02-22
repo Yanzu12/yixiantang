@@ -1,9 +1,9 @@
 import updateManager from './common/updateManager';
 import { init } from '@cloudbase/wx-cloud-client-sdk';
-import { getUser } from './services/usercenter/user';
+import { getUser, Userinit } from './services/usercenter/user';
 
 wx.cloud.init({
-    env: 'yixiantang-8gfkymtadf6b7244', // 指定云开发环境 ID
+    env: 'yixiantang-5g38r1z8c748da0b', // 指定云开发环境 ID
 });
 
 
@@ -15,7 +15,7 @@ globalThis.dataModel = models;
 
 App({
   onLaunch: function () {
-    getUser();
+    Userinit();
   },
   onShow: function () {
     updateManager();

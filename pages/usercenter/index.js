@@ -185,7 +185,7 @@ Page({
         Toast({
           context: this,
           selector: '#t-toast',
-          message: '你点击了帮助中心',
+          message: '请联系客服',
           icon: '',
           duration: 1000,
         });

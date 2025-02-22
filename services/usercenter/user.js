@@ -11,18 +11,18 @@ export function getUser(){
             key: USER_STORAGE_KEY,
             success (res) {
             //正式环境：通过缓存本地读取
-            // console.log('res',res)
-            // if(typeof(res.data) != 'undefined'){
-            //     console.log("read store",res.data);
-            //     resolve( res.data );
-            // }else{
-            //     const userInfo = getUserFromCloud();
-            //     resolve( userInfo);
-            // }
+            console.log('res',res)
+            if(typeof(res.data) != 'undefined'){
+                console.log("read store",res.data);
+                resolve( res.data );
+            }else{
+                const userInfo = getUserFromCloud();
+                resolve( userInfo);
+            }
             //测试环境：数据库远程读取
-              const userInfo = getUserFromCloud();
-              console.log('debug',userInfo)
-              resolve(userInfo);
+              // const userInfo = getUserFromCloud();
+              // console.log('debug',userInfo)
+              // resolve(userInfo);
             },
             fail(error){
                 console.log('error',error);
@@ -31,6 +31,35 @@ export function getUser(){
             }
         })
     })
+}
+
+export function Userinit() {
+  return new Promise((resolve, reject) => {
+    // 获取本地用户缓存
+    wx.getStorage({
+        key: USER_STORAGE_KEY,
+        success (res) {
+        //正式环境：通过缓存本地读取
+        // console.log('res',res)
+        // if(typeof(res.data) != 'undefined'){
+        //     console.log("read store",res.data);
+        //     resolve( res.data );
+        // }else{
+        //     const userInfo = getUserFromCloud();
+        //     resolve( userInfo);
+        // }
+        //测试环境：数据库远程读取
+          const userInfo = getUserFromCloud();
+          console.log('debug',userInfo)
+          resolve(userInfo);
+        },
+        fail(error){
+            console.log('error',error);
+            const userInfo = getUserFromCloud();
+            resolve(userInfo);
+        }
+    })
+})
 }
 
 async function getUserFromCloud() {

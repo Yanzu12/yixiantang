@@ -27,7 +27,7 @@
         </view>
         <view class="pay-item">
           <text>{{order.isPaid ? '实付' : '应付'}}</text>
-          <price style="margin-left:50%" fill decimalSmaller wr-class="pay-item__right font-bold primary max-size" price="{{order.currPrice * 100 || '0'}}" /><text style="font-weight: lighter;font-size: small;">积分抵扣{{order.use_points*0.01}}元</text>
+          <price style="margin-left:50%" fill decimalSmaller wr-class="pay-item__right font-bold primary max-size" price="{{order.currPrice * 100 || '0'}}" /><text wx:if="{{order.use_points}}" style="font-weight: lighter;font-size: small;">积分抵扣{{order.use_points*0.01}}元</text>
         </view>
       </view>
     </order-card>
