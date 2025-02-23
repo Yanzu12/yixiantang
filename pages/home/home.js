@@ -1,8 +1,17 @@
 /* eslint-disable no-param-reassign */
-import { getHomeSwiper } from '../../services/home/home';
-import { listGood, getPrice } from '../../services/good/spu';
-import { getCloudImageTempUrl } from '../../utils/cloudImageHandler';
-import { LIST_LOADING_STATUS } from '../../utils/listLoading';
+import {
+  getHomeSwiper
+} from '../../services/home/home';
+import {
+  listGood,
+  getPrice
+} from '../../services/good/spu';
+import {
+  getCloudImageTempUrl
+} from '../../utils/cloudImageHandler';
+import {
+  LIST_LOADING_STATUS
+} from '../../utils/listLoading';
 
 Page({
   data: {
@@ -15,17 +24,21 @@ Page({
     autoplay: true,
     duration: '500',
     interval: 5000,
-    navigation: { type: 'dots' },
-    swiperImageProps: { mode: 'scaleToFill' },
+    navigation: {
+      type: 'dots'
+    },
+    swiperImageProps: {
+      mode: 'scaleToFill'
+    },
     cloudCheckerShow: false
   },
   //   onShareTimeline: function () {
-//     return {
-//       title: '', // 可不填
-//       query: '', // 可不填 传递的参数，只能是这种格式
-//     }
-//   },
-onShareAppMessage() {
+  //     return {
+  //       title: '', // 可不填
+  //       query: '', // 可不填 传递的参数，只能是这种格式
+  //     }
+  //   },
+  onShareAppMessage() {
     const promise = new Promise(resolve => {
       setTimeout(() => {
         resolve({
@@ -36,17 +49,21 @@ onShareAppMessage() {
     return {
       title: '发现一个宝藏小程序',
       path: '/pages/home/home',
-      promise 
+      promise
     }
   },
 
   async onCloudCheck() {
     try {
       await getHomeSwiper();
-      this.setData({ cloudCheckerShow: false })
+      this.setData({
+        cloudCheckerShow: false
+      })
     } catch (e) {
       console.log(e);
-      this.setData({ cloudCheckerShow: true })
+      this.setData({
+        cloudCheckerShow: true
+      })
     }
   },
 
@@ -89,10 +106,14 @@ onShareAppMessage() {
   },
 
   async loadHomeSwiper() {
-    const { images } = await getHomeSwiper();
+    const {
+      images
+    } = await getHomeSwiper();
     const handledImages = await getCloudImageTempUrl(images);
 
-    this.setData({ imgSrcs: handledImages });
+    this.setData({
+      imgSrcs: handledImages
+    });
   },
 
   onReTry() {
@@ -106,13 +127,21 @@ onShareAppMessage() {
       });
     }
 
-    this.setData({ goodsListLoadStatus: LIST_LOADING_STATUS.LOADING });
+    this.setData({
+      goodsListLoadStatus: LIST_LOADING_STATUS.LOADING
+    });
 
     const pageSize = this.goodListPagination.num;
     const pageIndex = fresh ? 1 : this.goodListPagination.index;
 
     try {
-      const { records: nextList, total } = await listGood({ pageNumber: pageIndex, pageSize });
+      const {
+        records: nextList,
+        total
+      } = await listGood({
+        pageNumber: pageIndex,
+        pageSize
+      });
       const images = nextList.map((x) => x.cover_image);
       const handledImages = await getCloudImageTempUrl(images);
       handledImages.forEach((image, index) => (nextList[index].cover_image = image));
@@ -129,7 +158,9 @@ onShareAppMessage() {
       this.goodListPagination.num = pageSize;
     } catch (err) {
       console.error('error', err);
-      this.setData({ goodsListLoadStatus: LIST_LOADING_STATUS.FAILED });
+      this.setData({
+        goodsListLoadStatus: LIST_LOADING_STATUS.FAILED
+      });
     }
   },
 
@@ -150,11 +181,17 @@ onShareAppMessage() {
   },
 
   navToSearchPage() {
-    wx.navigateTo({ url: '/pages/goods/search/index' });
+    wx.navigateTo({
+      url: '/pages/goods/search/index'
+    });
   },
 
-  navToActivityDetail({ detail }) {
-    const { index: promotionID = 0 } = detail || {};
+  navToActivityDetail({
+    detail
+  }) {
+    const {
+      index: promotionID = 0
+    } = detail || {};
     wx.navigateTo({
       url: `/pages/promotion-detail/index?promotion_id=${promotionID}`,
     });

@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/course/index",
     "pages/usercenter/index",
     "pages/usercenter/person-info/index",
     "pages/usercenter/address/list/index",
@@ -47,6 +48,10 @@
       {
         "pagePath": "pages/goods/category/index",
         "text": "分类"
+      },
+      {
+        "pagePath": "pages/course/index",
+        "text": "课程"
       },
       {
         "pagePath": "pages/cart/index",
